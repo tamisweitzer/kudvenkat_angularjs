@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular.module('app', []);
+    app.controller('AppController', function($scope) {
+      $scope.message = "Hello Angular";
+
+      var employee = {
+        firstName: 'Ben',
+        lastName: 'Hastings',
+        gender: 'Male'
+      };
+      $scope.employee = employee;
+    });
+  </script>
+</head>
+<body ng-app="app" ng-controller="AppController">
+
+  <h2>Two-way data binding</h2>
+  <div>
+    <input type="text" ng-model="message">
+    <p>{{ message }}</p>
+
+    <table>
+      <tr>
+        <td>First Name</td>
+        <td>
+          <input type="text" ng-model="employee.firstName">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Last Name</td>
+        <td>
+          <input type="text" ng-model="employee.lastName">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Gender</td>
+        <td>
+          <input type="text" ng-model="employee.gender">
+        </td>
+      </tr>
+    </table>
+
+    <div>
+      <p>The employee is {{ employee.firstName }} {{ employee.lastName }} and is {{ employee.gender }}</p>
+    </div>
+
+    <table>
+      <tr>
+        <td>First Name</td>
+        <td>
+          {{ employee.firstName }}
+        </td>
+      </tr>
+
+      <tr>
+        <td>Last Name</td>
+        <td>
+          {{ employee.lastName}}
+        </td>
+      </tr>
+
+      <tr>
+        <td>Gender</td>
+        <td>
+          {{ employee.gender }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

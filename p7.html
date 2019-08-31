@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+<!--
+Handling events in AngularJS
+https://www.youtube.com/watch?v=8bf5aZSWp9A
+-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Handling Events</title>
+  <style>
+    body { padding: 1em; font-family: Arial, sans-serif; }
+    table { border: 1px solid #ddd; }
+    th, td { padding: 0.5rem;border: 1px solid #eee;  }
+    table input { padding: 0.3rem 0.6rem; margin: 0.3rem; font-variant: small-caps; }
+    table input:hover { cursor: pointer; }
+  </style>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular.module('app', [])
+    .controller('appCtrl', function($scope) {
+      var technologies = [
+        {name: 'C#', likes: 0, dislikes: 0},
+        {name: 'ASP.Net', likes: 0, dislikes: 0},
+        {name: 'SQL Server', likes: 0, dislikes: 0},
+        {name: 'AngularJS', likes: 0, dislikes: 0},
+      ];
+      $scope.technologies = technologies;
+
+      $scope.incrementLikes = function(technology) {
+        technology.likes++;
+      }
+      $scope.incrementDislikes = function(technology) {
+        technology.dislikes++;
+      }
+    });
+  </script>
+</head>
+<body>
+<div ng-controller="appCtrl">
+  <h2>Handling likes and dislikes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Likes</th>
+        <th>Dislikes</th>
+        <th>Likes/Dislikes</th>
+      </tr>
+      <tr ng-repeat="technology in technologies">
+        <td>{{ technology.name }}</td>
+        <td>{{ technology.likes }}</td>
+        <td>{{ technology.dislikes }}</td>
+        <td>
+          <input type="button" value="Like" ng-click="incrementLikes(technology)">
+          <input type="button" value="Dislike" ng-click="incrementDislikes(technology)">
+
+        </td>
+      </tr>
+    </thead>
+  </table>
+</div>
+</body>
+</html>

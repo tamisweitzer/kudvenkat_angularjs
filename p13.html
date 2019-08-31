@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+<!--
+Part 13 Create a Custom Filter
+https://www.youtube.com/watch?v=iAS_dkATtVI
+
+kudvenkat
+https://www.youtube.com/user/kudvenkat/videos
+-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Part 13 Create a Custom Filter</title>
+  <style>
+    body { padding: 1em; font-family: Arial, sans-serif; }
+    table { border: 1px solid #ddd; }
+    th, td { padding: 0.5rem;border: 1px solid #eee; min-width: 100px; }
+    th { cursor: pointer;  }
+    label {display: inline-block; min-width: 150px; text-align: right; padding: 0.5rem; }
+    input, select, option { min-width: 200px; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+    select { border: 1px solid #ccc; border-radius: 5px; cursor: pointer; }
+  </style>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular
+    .module('app', [])
+    .controller('appCtrl', function($scope) {
+      var employees  = [
+        { name: 'Ben',  gender: 1, salary: 55000.788, city: 'London' },
+        { name: 'Sara',  gender: 2, salary: 68000.00, city: 'Chennai' },
+        { name: 'Mark',  gender: 1, salary: 57000.00, city: 'London' },
+        { name: 'Pam',  gender: 2, salary: 53000.00, city: 'Chennai' },
+        { name: 'Todd',  gender: 3, salary: 60000.00, city: 'London' }
+      ];
+      $scope.employees = employees;
+        });
+  </script>
+</head>
+
+
+<body>
+<div ng-controller="appCtrl">
+  <h2>Custom Filters</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="employee in employees">
+        <td>{{ employee.name | uppercase }}</td>
+        <td>{{ employee.gender | gender  }}</td>
+        <td>{{ employee.salary | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<script src="p13filter.js"></script>
+</body>
+</html>

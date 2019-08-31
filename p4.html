@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The ng-src Directive </title>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular.module('app', []);
+    app.controller('AppCtrl', function($scope) {
+      var country= {
+        name: 'USA',
+        capital: 'Washington, D.C.',
+        flag: 'cute-kitten.jpg'
+      };
+
+      $scope.country = country;
+    });
+  </script>
+</head>
+
+
+<body  ng-app="app" ng-controller="AppCtrl">
+  <div>
+    <img src="cute-kitten.jpg" alt="">
+  </div>
+
+  <div>
+    <div>{{ country.name }}</div>
+    <div>{{ country.capital }}</div>
+    <!-- using a binding  with the img src attribute results in a 404 error but the image still prints to screen -->
+    <div><img src="{{country.flag}}" alt=""></div>
+  </div>
+
+  <div>
+    <div>{{ country.name }}</div>
+    <div>{{ country.capital }}</div>
+    <!-- Using the ng-src instead of src will not give a 404 error -->
+    <div><img ng-src="{{country.flag}}" alt=""></div>
+  </div>
+
+
+</body>
+</html>

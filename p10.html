@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+<!--
+AngularJS sort rows by table header
+https://www.youtube.com/watch?v=hnKSv28dp_w
+-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sorting data in AngularJS</title>
+  <style>
+    body { padding: 1em; font-family: Arial, sans-serif; }
+    table { border: 1px solid #ddd; }
+    th, td { padding: 0.5rem;border: 1px solid #eee; min-width: 100px; }
+    th { cursor: pointer;  }
+    select { padding:0.3rem 0.6rem; font-size: 1.1rem; cursor: pointer; }
+    .arrowUp { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 10px solid black; display: inline-block; }
+    .arrowDown { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 10px solid black; display: inline-block; }
+  </style>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular
+    .module('app', [])
+    .controller('appCtrl', function($scope) {
+
+      var employees  = [
+        { name: 'Ben', dob: new Date('November 23, 1980'), gender: 'Male', salary: 55000.788 },
+        { name: 'Sara', dob: new Date('May05, 1970'), gender: 'Female', salary: 68000.00 },
+        { name: 'Mark', dob: new Date('August 15, 1974'), gender: 'Male', salary: 57000.00 },
+        { name: 'Pam', dob: new Date('October 27, 1979'), gender: 'Female', salary: 53000.00 },
+        { name: 'Todd', dob: new Date('December 30, 1983'), gender: 'Male', salary: 60000.00 }
+      ];
+
+      $scope.employees = employees;
+      $scope.sortColumn = 'name';
+      $scope.reverseSort = false;
+      $scope.sortData = function(column) {
+        $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
+        $scope.sortColumn = column;
+      }
+      $scope.getSortClass = function(column) {
+        if ($scope.sortColumn == column) {
+          return $scope.reverseSort ? 'arrowDown' : 'arrowUp';
+        }
+
+      }
+    });
+  </script>
+</head>
+<body>
+<div ng-controller="appCtrl">
+
+  <h2>Sorting data in AngularJS</h2>
+
+  <p>Sort by:
+    <select ng-model="sortColumn" name="" id="">
+      <option value="name">Name ascending</option>
+      <option value="gender">Gender ascending</option>
+      <option value="dob">DOB ascending</option>
+      <option value="salary">Salary descending</option>
+
+    </select>
+  </p>
+  <p>click on any column header to sort</p>
+  <table>
+    <thead>
+      <tr>
+        <th ng-click="sortData('name')">Name <div ng-class="getSortClass('name')"></div></th>
+        <th ng-click="sortData('dob')">Date of Birth <div ng-class="getSortClass('dob')"></div></th>
+        <th ng-click="sortData('gender')">Gender <div ng-class="getSortClass('gender')"></div></th>
+        <th ng-click="sortData('salary')">Salary (number) <div ng-class="getSortClass('salary')"></div></th>
+        <th ng-click="sortData('salary')">Salary (currency) <div ng-class="getSortClass('salary')"></div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="employee in employees | orderBy:sortColumn:reverseSort">
+        <td>{{ employee.name | uppercase }}</td>
+        <td>{{ employee.dob | date:"dd/MM/yyyy" }}</td>
+        <td>{{ employee.gender | lowercase }}</td>
+        <td>{{ employee.salary | number:2 }}</td>
+        <td>{{ employee.salary | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

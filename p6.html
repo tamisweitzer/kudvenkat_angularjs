@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  AngularJS ng repeat directive
+  https://www.youtube.com/watch?v=MzqkIZLkBsU
+-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>part 6 - ngRepeat directive</title>
+  <style>
+    body { padding: 1em; font-family: sans-serif; }
+    table { border: 1px solid #ddd;}
+    th, td { padding: 0.5em; min-width: 100px; }
+
+  </style>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular.module('app', []);
+    app.controller('AppController', function($scope) {
+
+      var employees = [
+        {firstName: 'Ben', lastName: 'Hastings', gender: 'Male', salary: 55000 },
+        {firstName: 'Sara', lastName: 'Paul', gender: 'Female', salary: 68000 },
+        {firstName: 'Mark', lastName: 'Holland', gender: 'Male', salary: 57000 },
+        {firstName: 'Pam', lastName: 'MacIntosh', gender: 'Female', salary: 53000 },
+        {firstName: 'Todd', lastName: 'Barber', gender: 'Male',salary: 60000 }
+      ];
+      $scope.employees = employees;
+
+      var countries = [
+        {
+          name: 'UK',
+          cities: [
+            { name: 'London' },
+            { name: 'Manchester'},
+            { name: 'Birmingham'}
+          ]
+        },
+        {
+          name: 'USA',
+          cities: [
+            { name: 'Los Angeles' },
+            { name: 'Chicago'},
+            { name: 'Houston'}
+          ]
+        },
+        {
+          name: 'India',
+          cities: [
+            { name: 'Hyderabad' },
+            { name: 'Chennai'},
+            { name: 'Mumbai'}
+          ]
+        }
+      ];
+      $scope.countries = countries;
+    });
+  </script>
+</head>
+<body ng-app="app" ng-controller="AppController">
+  <h2>Two-way data binding</h2>
+  <div>
+
+  <h2>ng-Repeat in a table</h2>
+    <table border=1>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="employee in employees">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.salary }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Nested ngRepeat</h2>
+
+    <h3>Countries</h3>
+    <script>
+      // To find the index an of item in a collection, use the
+      // $index property
+      // To get the index of the parent element:
+      // - use $parent.$index or
+      // - use ng-init="someVariableName = $index"
+    </script>
+    <ul>
+      <li ng-repeat="country in countries">
+        {{ country.name }} - Index = {{ $index }}
+        <ul>
+          <li ng-repeat="city in country.cities">{{ city.name }} - Index = {{ $index }}</li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</body>
+</html>

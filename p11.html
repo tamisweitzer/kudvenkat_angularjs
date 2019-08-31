@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+<!--
+AngularJS sort rows by table header
+https://www.youtube.com/watch?v=hnKSv28dp_w
+-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Search filter in AngularJS</title>
+  <style>
+    body { padding: 1em; font-family: Arial, sans-serif; }
+    table { border: 1px solid #ddd; }
+    th, td { padding: 0.5rem;border: 1px solid #eee; min-width: 100px; }
+    th { cursor: pointer;  }
+    label {display: inline-block; min-width: 150px; text-align: right; padding: 0.5rem; }
+    input, select, option { min-width: 200px; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+    select { border: 1px solid #ccc; border-radius: 5px; cursor: pointer; }
+  </style>
+  <script src="angular.js"></script>
+  <script>
+    var app = angular
+    .module('app', [])
+    .controller('appCtrl', function($scope) {
+
+      var employees  = [
+        { name: 'Ben',  gender: 'Male', salary: 55000.788, city: 'London' },
+        { name: 'Sara',  gender: 'Female', salary: 68000.00, city: 'Chennai' },
+        { name: 'Mark',  gender: 'Male', salary: 57000.00, city: 'London' },
+        { name: 'Pam',  gender: 'Female', salary: 53000.00, city: 'Chennai' },
+        { name: 'Todd',  gender: 'Male', salary: 60000.00, city: 'London' }
+      ];
+
+      $scope.employees = employees;
+    });
+  </script>
+</head>
+<body>
+<div ng-controller="appCtrl">
+
+  <h2>Sorting data in AngularJS</h2>
+
+  <div>
+    <label for="searchAll">Search All</label>
+    <input type="text" id="searchAll" ng-model="searchText" placeholder="Search employees">
+  </div>
+<!--
+  <div>
+    <label for="searchName">Search by Name</label>
+    <input type="text" id="searchName" ng-model="searchText.name" placeholder="Search by Name">
+  </div>
+
+  <div>
+    <label for="searchCity">Search by City</label>
+    <input type="text" id="searchCity" ng-model="searchText.city" placeholder="Search by City">
+  </div>
+
+  <div>
+    <label for="searchSalary">Search Salary</label>
+    <input type="text" id="searchSalary" ng-model="searchText.salary" placeholder="Search by Salary">
+  </div> -->
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Salary</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="employee in employees | filter: searchText">
+        <td>{{ employee.name | uppercase }}</td>
+        <td>{{ employee.gender | lowercase }}</td>
+        <td>{{ employee.salary | currency }}</td>
+        <td>{{ employee.city }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

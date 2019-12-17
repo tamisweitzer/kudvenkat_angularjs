@@ -2,16 +2,16 @@
 <html lang="en" ng-app="app">
 <head>
 <!--
-Part 14 ngHide and ngShow in AngularJS
+Part 15 ng-init directive in AngularJS
 https://www.youtube.com/watch?v=-6SpqNyzcjU
 
 kudvenkat
-https://www.youtube.com/user/kudvenkat/videos
+https://www.youtube.com/watch?v=uMwLgGlguXw&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl&index=15
 -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Part 14 ngHide and ngShow in AngularJS</title>
+<title>Part 15 ngInit Directive in AngularJS</title>
   <style>
     body { padding: 1em; font-family: Arial, sans-serif; }
     table { border: 1px solid #ddd; }
@@ -26,31 +26,37 @@ https://www.youtube.com/user/kudvenkat/videos
     var app = angular
     .module('app', [])
     .controller('appCtrl', function($scope) {
-      var employees  = [
-        { name: 'Ben',  gender: "Male", salary: 55000.788, city: 'London' },
-        { name: 'Sara',  gender: "Female", salary: 68000.00, city: 'Chennai' },
-        { name: 'Mark',  gender: "Male", salary: 57000.00, city: 'London' },
-        { name: 'Pam',  gender: "Female", salary: 53000.00, city: 'Chennai' },
-        { name: 'Todd',  gender: "Male", salary: 60000.00, city: 'London' }
-      ];
-      $scope.employees = employees;
+        var msg = "working";
+        $scope.msg = msg;
         });
+
+        /* ng-init should only be used for aliasing special 
+        properties of ng-repeat directive
+
+        */
   </script>
 </head>
 
 
 <body>
 <div ng-controller="appCtrl">
-  <h2>ngHide and ngShow</h2>
-  <input type="checkbox" ng-model="hideSalary"  /> Hide Salary
+  <h2>ng-init directive</h2>
+
+  <div ng-init="employees  = [
+        { name: 'Ben',  gender: 'Male', salary: 55000.788, city: 'London' },
+        { name: 'Sara',  gender: 'Female', salary: 68000.00, city: 'Chennai' },
+        { name: 'Mark',  gender: 'Male', salary: 57000.00, city: 'London' },
+        { name: 'Pam',  gender: 'Female', salary: 53000.00, city: 'Chennai' },
+        { name: 'Todd',  gender: 'Male', salary: 60000.00, city: 'London' }
+      ]">
+    </div>
+
   <table>
     <thead>
       <tr>
         <th>Name</th>
         <th>Gender</th>
         <th>City</th>
-        <th ng-hide="hideSalary">Salary</th>
-        <th ng-show="hideSalary">Salary</th>
       </tr>
     </thead>
     <tbody>
@@ -58,8 +64,6 @@ https://www.youtube.com/user/kudvenkat/videos
         <td>{{ employee.name }}</td>
         <td>{{ employee.gender  }}</td>
         <td>{{ employee.city }}</td>
-        <td ng-hide="hideSalary">{{ employee.salary | currency }}</td>
-        <td ng-show="hideSalary">#########</td>
       </tr>
     </tbody>
   </table>

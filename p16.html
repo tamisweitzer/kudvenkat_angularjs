@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <!-- 
+    16 - ngInclude Directive 
+    https://www.youtube.com/watch?v=ynzFB2TOZCo&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl&index=16
+  -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+</head>
+<body ng-controller="AppController">
+  <div class="container my-4">
+    <h2>ngInclude Directive via Another HTML Page</h2>
+    <!-- <div ng-include="'p16_employee_table.html'"></div> -->
+    <div ng-include="employeeView"></div> 
+  </div>
+
+  <div class="container my-4">
+    <h2>Select View</h2>
+    <select ng-model="employeeViewSelect" name="" id="">
+      <option value="p16_employee_table.html">Table</option>
+      <option value="p16_employee_list.html">List</option>
+    </select>
+    <div ng-include="employeeViewSelect"></div>
+
+  </div>
+
+
+<script src="angular.js"></script>
+<script>
+  let app = angular
+  .module('app', [])
+  .controller('AppController', function($scope) {
+    let employees  = [
+        { name: 'Ben',  gender: 'Male', salary: 55000.788, city: 'London' },
+        { name: 'Sara',  gender: 'Female', salary: 68000.00, city: 'Chennai' },
+        { name: 'Mark',  gender: 'Male', salary: 57000.00, city: 'London' },
+        { name: 'Pam',  gender: 'Female', salary: 53000.00, city: 'Chennai' },
+        { name: 'Todd',  gender: 'Male', salary: 60000.00, city: 'London' }
+      ];
+      $scope.employees = employees; 
+      $scope.employeeView = 'p16_employee_table.html'
+      $scope.employeeViewSelect = 'p16_employee_table.html'
+  });
+</script>
+</body>
+</html>  

@@ -2,8 +2,8 @@
 <html lang="en" ng-app="app">
 <head>
   <!-- 
-    p17 - $http Service
-    https://www.youtube.com/watch?v=Zcx2rrgJ1H8&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl&index=21
+    p18 - $http Service
+    ttps://www.youtube.com/watch?v=GsSAEh4K4Sw&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl&index=18
   -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,16 +13,36 @@
 </head>
 <body>
   <div class="container" ng-controller="appCtrl">
-    <h2>$http Service</h2>
-    {{ msg }}
+    <h2>Using the $http Service</h2>
+    <p>The $http service is used to make http requests to a server.</p>
+    <p>Using this service you can make a GET, POST, PUT, or DELETE request to a database on a server.</p>
+    <pre><code class="language-javascript">
+      let app = angular.module('app', []);
+    app.controller('appCtrl', function($scope) {
+      
+      $http.get({
+        method: 'GET',
+        url: 'urlToServer'
+      })
+      .then( function(response) {
+        // handle response.data
+      });
+    });
+    </code></pre>
   </div>
 
   <script src="angular.js"></script>
   <script>
     let app = angular.module('app', []);
     app.controller('appCtrl', function($scope) {
-      $scope.msg = 'working';
-      $http.get('')
+      
+      $http.get({
+        method: 'GET',
+        url: 'urlToServer'
+      })
+      .then( function(response) {
+        // handle response.data
+      });
     });
 
     

@@ -110,8 +110,8 @@ let app = angular.module('app', []);
         {
           name: 'p18 $http Service',
           url: 'p18.html',
-          description: 'Making use of the $http service',
-          tags: ['$http', 'service'],
+          description: 'Making use of the $http service to make GET, POST, PUT, and DELETE requests to a server.',
+          tags: ['$http', 'service', 'crud', 'GET', 'POST', 'http request', 'api', 'XMLHttpRequest', 'JSONP'],
         },
         {
           name: 'p19 Services',
@@ -142,6 +142,60 @@ let app = angular.module('app', []);
           url: '',
           description: 'Using ngRoute to navigate between different pages of a SPA',
           tags: ['ngRoute', 'router', 'SPA', ],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
+        },
+        {
+          name: '',
+          url: '',
+          description: '',
+          tags: ['', ''],
         },
         {
           name: '',

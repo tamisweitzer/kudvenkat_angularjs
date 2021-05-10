@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngularJS Samples</title>
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body ng-controller="MainController">
+  <header class="header container-fluid pt-3 text-center">
+    <h1>AngularJS</h1>
+    <p>Code from <a href="https://www.youtube.com/watch?v=Y2Few_nkze0">AngularJS Tutorial</a> series by kudvenkat on YouTube.</p>
+  </header>
+
+  <main class="main container mt-5">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Description</th>
+        <th>Tags</th>
+      </tr>
+      <tr ng-repeat="item in list">
+        <td>{{ item.name }}</td>
+        <td><a href="{{item.url}}">{{ item.url }}</a></td>
+        <td>{{ item.description }}</td>
+        <td><span ng-repeat="tag in item.tags track by $index">{{ tag }}, </span></td>
+      </tr>
+    </table>
+  </main>
+
+  <footer class="footer container-fluid">
+    footer
+  </footer>
+  <script src="prism.js"></script>
+  <script src="angular-1.7.8/angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

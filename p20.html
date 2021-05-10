@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <!-- 
+    Part 20 - Create Custom Services
+    link
+  -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Custom Services</title>
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container" ng-controller="appCtrl">
+    <h2>{{ title }}</h2> 
+    <table class="table">
+      <tr>
+        <th>Your String</th>
+        <th>
+          <input type="text" ng-model="input">
+        </th>
+      </tr>
+      <tr>
+        <th>Result</th>
+        <td>
+          <input type="text" ng-model="output">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-right">
+          <input type="button" value="Process String" ng-click="transformString(input)">
+        </td>
+      </tr>
+    </table>
+
+    <h3>String to Upper Service</h3>
+    <table class="table">
+      <tr>
+        <th>Your String</th>
+        <th>
+          <input type="text" ng-model="input2">
+        </th>
+      </tr>
+      <tr>
+        <th>Result</th>
+        <td>
+          <input type="text" ng-model="output2">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-right">
+          <input type="button" value="Process String 2" ng-click="transformString2(input2)">
+        </td>
+      </tr>
+    </table>
+
+    <div>
+      <h3>More Services</h3>
+      <p ng-model="srvIn" ng-mouseover="hideText(srvIn)">Hello World</p>
+      <input type="text" ng-model="srvOut" />
+    </div>
+    
+  </div>
+
+  <script src="angular.js"></script>
+  
+  <script>
+    let app = angular.module('app', []);
+
+    app.controller('appCtrl', function($scope, stringService, stringService2, HideTextService) {
+      let title = document.title;
+      $scope.title = title;
+
+      $scope.transformString = function(input) {
+        $scope.output = stringService.processString(input);
+      }
+
+      $scope.transformString2 = function(input2) {
+        $scope.output2 = stringService2.processString(input2);
+      }
+
+      $scope.hideText = function(srvIn) {
+        $scope.srvOut = HideTextService.hideText(srvIn);
+      }
+    });
+  </script>
+  <script src="p20_StringService.js"></script>
+  <script src="p20_StringService2.js"></script>
+  <script src="p20_HideTextService.js"></script>
+</body>
+</html>

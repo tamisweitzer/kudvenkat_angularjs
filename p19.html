@@ -2,18 +2,19 @@
 <html lang="en" ng-app="app">
 <head>
   <!-- 
-    Part xx - title
-    Playlist https://www.youtube.com/watch?v=zKkUN-mJtPQ&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl
+    Part 19 - AngulaJS Services
+    https://www.youtube.com/watch?v=qhncBUvkRX4&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl&index=19
   -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Title</title>
+  <title>AngularJS Services</title>
   <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container" ng-controller="appCtrl">
-    <h2>{{ title }}</h2>
+    <h2>{{title}}</h2>
+
   </div>
 
   <script src="angular.js"></script>
@@ -23,7 +24,8 @@
     app.controller('appCtrl', function($scope) {
       let title = document.title;
       $scope.title = title;
-    });
+
+    })
     
   </script>
 </body>

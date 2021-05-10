@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <!-- 
+    Part 21 - Anchor Scroll
+    https://www.youtube.com/watch?v=Zcx2rrgJ1H8&t=61s
+  -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anchor Scroll Example</title>
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container" ng-controller="appCtrl">
+    <button id="top" class="btn btn-info" ng-click="scrollTo('bottom')">Go to bottom of page</button>
+    <h2>{{ title }}</h2>
+    <div class="container border my-4">
+      
+      <h3>What is AngularJS</h3>
+      <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ratione minima ab id tempore, nostrum maxime quibusdam aliquid delectus voluptatem porro natus maiores non quia earum voluptate nesciunt iusto voluptatibus inventore? Error maiores aliquid commodi non quae accusamus aspernatur minus esse doloribus.</p>
+      
+      
+      <h2>Who Developed AngularJS</h2>
+      <p>Rem pariatur excepturi minima veritatis odit nulla. A quisquam aspernatur error soluta quam deleniti, omnis vitae laboriosam sit, voluptate odit aliquam accusamus totam esse porro fugit beatae vel! Officiis, accusamus vitae expedita ratione enim error necessitatibus tempora vel ea quibusdam. Sed ratione vitae dolorem molestiae, perferendis, laboriosam architecto eius illo officiis at laborum modi excepturi eos molestias voluptatem, iure ab aut assumenda dolore!</p>
+
+      <p class="paragraph">Voluptatem eveniet ut cum deserunt consectetur obcaecati. Delectus harum optio saepe quidem ipsum, ab modi distinctio culpa beatae! Excepturi, ducimus illo laboriosam aliquid aliquam aspernatur culpa reiciendis amet tempore ut totam a! Quibusdam est necessitatibus enim veritatis minus delectus perspiciatis quos blanditiis magnam? Explicabo aliquam laborum nam dignissimos, blanditiis perspiciatis expedita. </p>
+
+      <p class="paragraph">Eligendi beatae voluptatibus sint veritatis odio reprehenderit! Labore deleniti fugit, error dicta quisquam repudiandae velit debitis nostrum id provident porro laboriosam asperiores neque facere eos quibusdam! Eos a temporibus cupiditate non cum deserunt laborum aut harum deleniti laudantium blanditiis rerum, asperiores minima doloremque excepturi.</p>
+    </div>
+    <button id="bottom" class="btn btn-info" ng-click="scrollTo('top')">Go to Top of Page</button>
+  </div>
+
+  <script src="angular.js"></script>
+  <script>
+    let app = angular.module('app', []);
+
+    app.controller('appCtrl', function($scope, $location, $anchorScroll) {
+      let title = document.title;
+      $scope.title = title;
+
+      $scope.scrollTo = function(scrollLocation) {
+        $location.hash(scrollLocation);
+        $anchorScroll.yOffset = 200;
+        $anchorScroll();
+      }
+
+     
+    });  
+  </script>
+</body>
+</html>

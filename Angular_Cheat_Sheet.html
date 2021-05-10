@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular Cheat Sheet</title>
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="prism.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body ng-controller="MainController">
+  <div class="container">
+    <h1>Angular Cheat Sheet</h1>
+    <p>Markdown file: <a href="Angular_Cheat_Sheet.md">Angular_Cheat_Sheet.md</a></p>
+  </div>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Images the Angular Way</h2>
+
+    <p>Using a binding  with the img src attribute results in a 404 error in the console window but the image still prints to screen</p>
+  <pre><code class="language-html">
+    &lt;img src=&lcub;&lcub;country.flag&rcub;&rcub;" alt=""&gt;
+  </code></pre>
+   
+    <p>Using the ng-src fixes the 404 error</p>
+  <pre><code class="language-html">
+    &lt;img ng-src="&lcub;&lcub;myimage.jpg&rcub;&rcub;" alt=""&gt;
+  </code></pre> 
+  </div>
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Two-way Data Binding</h2>
+
+    <p>To bind data two-ways, use an ngModel along with the curly braces </p>
+
+    <input type="text" class="form-control" ng-model="twowaymsg" placeholder="type something here">
+
+    <p class="form-control mt-1">{{ twowaymsg }}</p>
+  </div>
+
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Sorting Data in AngularJS</h2>
+
+    <p>In the table, the orderBy filter is set to the sortColumn ngModel of the select element.</p>
+
+    <p>Sort by: 
+      <!-- ng-model is set to sortColumn -->
+      <select ng-model="sortColumn" name="" id="">
+        <option value="name">Name ascending</option>
+        <option value="gender">Gender ascending</option>
+        <option value="age">Age ascending</option>
+        <option value="salary">Salary descending</option>
+      </select>
+    </p>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Salary (number)</th>
+          <th>Salary (currency)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- The table is bound to the sortColumn model -->
+        <tr ng-repeat="employee in employees | orderBy: sortColumn">
+          <td>{{ employee.name | uppercase }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.gender | lowercase }}</td>
+          <td>{{ employee.salary | number:2 }}</td>
+          <td>{{ employee.salary | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="prism.js"></script>
+  <script src="angular-1.7.8/angular.min.js"></script>
+  <script src="angular-cheat-sheet.app.js"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 
 // ways to build the module and controller
+
 // In three steps
 var myApp = angular.module('myModule', []);
 var myController = function ($scope) {

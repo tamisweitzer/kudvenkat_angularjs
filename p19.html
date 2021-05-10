@@ -13,8 +13,9 @@
 </head>
 <body>
   <div class="container" ng-controller="appCtrl">
-    <h2>{{title}}</h2>
-
+    <h2>p19 {{title}}</h2>
+    <p>A service is an object that provides some sort of service. The service object can have properties and methods, just like any other JavaScript object.</p>
+    <p>Services encapsulate reusuable logic that does not belong anywhere else (i.e. directives, filters, views, models, and controllers).</p>
   </div>
 
   <script src="angular.js"></script>
@@ -24,9 +25,7 @@
     app.controller('appCtrl', function($scope) {
       let title = document.title;
       $scope.title = title;
-
-    })
-    
+    });
   </script>
 </body>
 </html>

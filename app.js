@@ -111,13 +111,13 @@ let app = angular.module('app', []);
           name: 'p18 $http Service',
           url: 'p18.html',
           description: 'Making use of the $http service to make GET, POST, PUT, and DELETE requests to a server.',
-          tags: ['$http', 'service', 'crud', 'GET', 'POST', 'http request', 'api', 'XMLHttpRequest', 'JSONP'],
+          tags: ['$http', 'service', 'crud', 'GET', 'POST', 'http request', 'api', 'XMLHttpRequest', 'JSONP', '$log service'],
         },
         {
           name: 'p19 Services',
           url: 'p19.html',
-          description: 'Introduction to services',
-          tags: ['services', ''],
+          description: 'Introduction to services'.,
+          tags: ['services'],
         },
         {
           name: 'p20 Writing Custom Services',

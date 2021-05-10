@@ -116,7 +116,7 @@ let app = angular.module('app', []);
         {
           name: 'p19 Services',
           url: 'p19.html',
-          description: 'Introduction to services'.,
+          description: 'Introduction to services',
           tags: ['services'],
         },
         {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <!-- 
+    Part 23 - Routing
+    Playlist https://www.youtube.com/watch?v=zKkUN-mJtPQ&list=PL6n9fhu94yhWKHkcL7RJmmXyxkuFB3KSl
+  -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p23 Routing</title>
+  <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  <style>
+    .header {background-color: lavender; color: #000; padding: 1rem;}
+    .main { min-height: 600px;}
+    .nav-col { background-color: #f5f5f5;}
+    .nav-col ul { line-height:3;}
+    .footer {background-color: lavender; color: #000; padding: 1rem;}
+  </style>
+</head>
+<body>
+  <div class="container" ng-controller="appCtrl">
+    <h2>{{ title }}</h2>
+
+    <header class="header">
+      Website Header
+    </header>
+
+    <main class="main container">
+      <div class="row">
+        <div class="col-md-4 nav-col">
+          <ul>
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/courses">Courses</a></li>
+            <li><a href="#students">Students</a></li>
+            <li><a href="#link">link</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-8 main-col">
+          <ng-view></ng-view>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      Website Footer
+    </footer>
+  </div>
+  
+  <script src="angular.js"></script>
+  <script src="angular-1.7.8/angular-route.min.js"></script>
+  <script>
+    let app = angular.module('app', []);
+
+    app.controller('appCtrl', function($scope) {
+      let title = document.title;
+      $scope.title = title;
+    }); 
+    
+  </script>
+</body>
+</html>

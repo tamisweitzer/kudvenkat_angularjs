@@ -12,8 +12,13 @@
   <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="container" ng-controller="appCtrl">
-    <h2>{{ title }}</h2>
+  <div class="container my-5" ng-controller="appCtrl">
+    <h2>p {{ title }}</h2>
+  </div>
+
+  <div class="container">
+    <h3>HEADER3</h3>
+    <div></div>
   </div>
 
   <script src="angular.js"></script>
@@ -21,8 +26,8 @@
     let app = angular.module('app', []);
 
     app.controller('appCtrl', function($scope) {
-      let title = document.title;
-      $scope.title = title;
+      $scope.title = document.title;
+      
     });
     
   </script>
